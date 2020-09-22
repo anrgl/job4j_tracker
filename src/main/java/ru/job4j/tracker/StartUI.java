@@ -8,5 +8,8 @@ public class StartUI {
         Item item1 = new Item();
         String currentDateTimeFormat = formatter.format(item1.getCreated());
         System.out.println(currentDateTimeFormat);
+
+        Item item2 = new Item(2, "Second item");
+        System.out.println(item2);
     }
 }
