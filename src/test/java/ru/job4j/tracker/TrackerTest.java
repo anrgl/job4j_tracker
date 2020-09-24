@@ -46,4 +46,74 @@ public class TrackerTest {
         assertThat(out[0].getName(), is("Item#1"));
         assertThat(out[1].getName(), is("Item#1"));
     }
+
+    @Test
+    public void whenId1ThenFindItem() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item();
+        tracker.add(item1);
+
+        assertThat(tracker.findById(1).getId(), is(1));
+    }
+
+    @Test
+    public void whenReplaceTrue() {
+        Tracker tracker = new Tracker();
+
+        Item oldItem = new Item();
+        oldItem.setName("Old Item");
+        Item newItem = new Item();
+        newItem.setName("New Item");
+
+        tracker.add(oldItem);
+        boolean out = tracker.replace(1, newItem);
+
+        assertThat(out, is(true));
+        assertThat(tracker.findById(1).getName(), is(newItem.getName()));
+    }
+
+    @Test
+    public void whenReplaceFalse() {
+        Tracker tracker = new Tracker();
+
+        Item oldItem = new Item();
+        oldItem.setName("Old Item");
+        Item newItem = new Item();
+        newItem.setName("New Item");
+
+        tracker.add(oldItem);
+        boolean out = tracker.replace(2, newItem);
+
+        assertThat(out, is(false));
+    }
+
+    @Test
+    public void whenReplace() {
+        Tracker tracker = new Tracker();
+        Item bug = new Item();
+        bug.setName("Bug");
+        tracker.add(bug);
+        int id = bug.getId();
+        Item bugWithDesc = new Item();
+        bugWithDesc.setName("Bug with description");
+        tracker.replace(id, bugWithDesc);
+        assertThat(tracker.findById(id).getName(), is("Bug with description"));
+    }
+
+    @Test
+    public void findById() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item();
+        item1.setName("Item#1");
+        Item item2 = new Item();
+        item2.setName("Item#2");
+        Item item3 = new Item();
+        item3.setName("Item#1");
+
+        tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+
+        assertThat(tracker.findById(2).getId(), is(2));
+    }
 }
