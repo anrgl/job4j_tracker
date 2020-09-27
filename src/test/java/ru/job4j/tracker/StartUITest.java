@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 
 public class StartUITest {
     @Test
@@ -19,25 +20,29 @@ public class StartUITest {
 
     @Test
     public void whenReplaceItem() {
-        String[] answers = {"Item #1"};
-        Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        StartUI.createItem(input, tracker);
-        boolean result = tracker.replace(1, new Item("Item #42"));
-        Item replaced = tracker.findAll()[0];
-        Item expected = new Item("Item #42");
-        assertThat(result, is(true));
-        assertThat(replaced.getName(), is(expected.getName()));
-
+        Item item = new Item("new item");
+        tracker.add(item);
+        String id = Integer.toString(item.getId());
+        String[] answers = {
+                id,
+                "replaced item"
+        };
+        StartUI.replaceItem(new StubInput(answers), tracker);
+        Item replaced = tracker.findById(item.getId());
+        assertThat(replaced.getName(), is("replaced item"));
     }
 
     @Test
     public void whenDeleteItem() {
-        String[] answers = {"Item #1"};
-        Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        StartUI.createItem(input, tracker);
-        boolean expected = tracker.delete(1);
-        assertThat(expected, is(true));
+        Item item = new Item("new item");
+        tracker.add(item);
+        String id = Integer.toString(item.getId());
+        String[] answers = {id};
+        StartUI.deleteItem(new StubInput(answers), tracker);
+        Item deleted = tracker.findById(1);
+        assertThat(deleted, is(nullValue()));
+
     }
 }

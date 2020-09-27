@@ -64,7 +64,7 @@ public class StartUI {
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            System.out.println("Item replaces success!");
+            System.out.println("Item replaced success!");
         } else {
             System.out.println("Error. Something wrong!");
         }
