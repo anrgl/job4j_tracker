@@ -4,23 +4,19 @@ public class StartUI {
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
-            this.showMenu();
+            this.showMenu(actions);
+            System.out.print("Select: ");
             int select = Integer.parseInt(input.askStr("Select: "));
             UserAction action = actions[select];
             run = action.execute(input, tracker);
         }
     }
 
-    private void showMenu() {
+    private void showMenu(UserAction[] actions) {
         System.out.println("Menu.");
-        System.out.println("0. Add new Item");
-        System.out.println("1. Show all items");
-        System.out.println("2. Edit item");
-        System.out.println("3. Delete item");
-        System.out.println("4. Find item by Id");
-        System.out.println("5. Find items by name");
-        System.out.println("6. Exit Program");
-        System.out.print("Select: ");
+        for (int i = 0; i < actions.length; i++) {
+            System.out.println(i + ". " + actions[i].name());
+        }
     }
 
     public static void main(String[] args) {
