@@ -33,7 +33,7 @@ public class StartUITest {
                 new String[]{"0", id, replacedName, "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(),
+                new ReplaceAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
@@ -50,7 +50,7 @@ public class StartUITest {
                 new String[]{"0", id, "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(),
+                new DeleteAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
