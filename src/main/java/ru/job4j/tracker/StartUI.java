@@ -11,7 +11,6 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
-            System.out.print("Select: ");
             int select = Integer.parseInt(input.askStr("Select: "));
             UserAction action = actions[select];
             run = action.execute(input, tracker);
@@ -31,11 +30,11 @@ public class StartUI {
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(output),
-                new ShowAction(),
+                new ShowAction(output),
                 new ReplaceAction(),
                 new DeleteAction(),
-                new FindByIdAction(),
-                new FindByNameAction(),
+                new FindByIdAction(output),
+                new FindByNameAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(input, tracker, actions);
