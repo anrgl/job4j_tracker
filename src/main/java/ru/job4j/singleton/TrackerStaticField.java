@@ -1,14 +1,16 @@
 package ru.job4j.singleton;
 
+import ru.job4j.tracker.Tracker;
+
 public class TrackerStaticField {
-    private static TrackerStaticField instance;
+    private static Tracker instance;
 
     private TrackerStaticField() {
     }
 
-    public static TrackerStaticField getInstance() {
+    public static Tracker getInstance() {
         if (instance == null) {
-            instance = new TrackerStaticField();
+            instance = new Tracker();
         }
         return instance;
     }
