@@ -2,6 +2,7 @@ package ru.job4j.search;
 
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.is;
 
@@ -24,5 +25,12 @@ public class PriorityQueueTest {
         queue.put(new Task("Gamma", 42));
         Task result = queue.take();
         assertThat(result.getDesc(), is("Gamma"));
+    }
+
+    @Test
+    public void whenNoTasks() {
+        PriorityQueue queue = new PriorityQueue();
+        Task result = queue.take();
+        assertThat(result, nullValue());
     }
 }
