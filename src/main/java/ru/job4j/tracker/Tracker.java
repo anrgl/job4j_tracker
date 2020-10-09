@@ -47,8 +47,7 @@ public class Tracker {
             return false;
         }
         item.setId(id);
-        items.remove(index);
-        items.add(index, item);
+        items.set(index, item);
         return true;
     }
 
