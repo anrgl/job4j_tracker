@@ -18,11 +18,11 @@ public class ItemTest {
                 new Item(5, "Fix bug"),
                 new Item(1, "First go sleep")
         );
-        Collections.sort(items);
+        Collections.sort(items, new SortByNameItem());
         List<Item> expect = Arrays.asList(
+                new Item(42, "Bye the bread"),
                 new Item(1, "First go sleep"),
-                new Item(5, "Fix bug"),
-                new Item(42, "Bye the bread")
+                new Item(5, "Fix bug")
         );
         assertThat(items, is(expect));
     }
@@ -34,11 +34,11 @@ public class ItemTest {
                 new Item(5, "Fix bug"),
                 new Item(42, "Bye the bread")
         );
-        Collections.sort(items, Collections.reverseOrder());
+        Collections.sort(items, new ReverseByNameItem());
         List<Item> expect = Arrays.asList(
-                new Item(42, "Bye the bread"),
                 new Item(5, "Fix bug"),
-                new Item(1, "First go sleep")
+                new Item(1, "First go sleep"),
+                new Item(42, "Bye the bread")
         );
         assertThat(items, is(expect));
     }

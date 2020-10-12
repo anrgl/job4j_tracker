@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Item implements Comparable<Item> {
+public class Item {
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
@@ -62,16 +62,11 @@ public class Item implements Comparable<Item> {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id;
+        return Objects.equals(name, item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public int compareTo(Item o) {
-        return Integer.compare(id, o.id);
+        return Objects.hash(name);
     }
 }
