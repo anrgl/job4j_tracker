@@ -3,22 +3,23 @@ package ru.job4j.streamapi;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class ProfilesTest {
-    private List<Profile> profiles = new ArrayList<>();
+    private List<Profile> profiles;
 
     @Before
     public void setUp() {
-        profiles.add(new Profile(new Address("Moscow", "Lenin st.", 1, 1)));
-        profiles.add(new Profile(new Address("Moscow", "Lenin st.", 1, 1)));
-        profiles.add(new Profile(new Address("Moscow", "Lenin st.", 1, 1)));
-        profiles.add(new Profile(new Address("Moscow", "Lenin st.", 1, 42)));
-        profiles.add(new Profile(new Address("Moscow", "Lenin st.", 1, 42)));
+        profiles = List.of(
+                new Profile(new Address("Moscow", "Lenin st.", 1, 1)),
+                new Profile(new Address("Moscow", "Lenin st.", 1, 1)),
+                new Profile(new Address("Moscow", "Lenin st.", 1, 1)),
+                new Profile(new Address("Moscow", "Lenin st.", 1, 42)),
+                new Profile(new Address("Moscow", "Lenin st.", 1, 42))
+        );
     }
 
     @Test
