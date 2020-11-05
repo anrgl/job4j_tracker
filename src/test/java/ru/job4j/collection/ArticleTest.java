@@ -75,4 +75,14 @@ public class ArticleTest {
                 is(false)
         );
     }
+
+    @Test
+    public void whenLineWithPunctuations() {
+        assertThat(
+                Article.generateBy(
+                        "Один, два, три!",
+                        "два; три;"),
+                is(true)
+        );
+    }
 }

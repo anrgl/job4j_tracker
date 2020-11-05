@@ -6,9 +6,11 @@ import java.util.Set;
 
 public class Article {
     public static boolean generateBy(String origin, String line) {
-        Set<String> words = new HashSet<>(Arrays.asList(line.split(" ")));
+        String originWithoutPunctuation = origin.replaceAll("\\p{P}", "");
+        String lineWithoutPunctuation = line.replaceAll("\\p{P}", "");
+        Set<String> words = new HashSet<>(Arrays.asList(lineWithoutPunctuation.split(" ")));
         for (String word : words) {
-            if (!origin.contains(word)) {
+            if (!originWithoutPunctuation.contains(word)) {
                 return false;
             }
         }
