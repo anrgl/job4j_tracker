@@ -1,6 +1,7 @@
 package ru.job4j.lambda;
 
-import java.util.function.*;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public class Reduce {
     public static int summation(int to) {
@@ -35,7 +36,9 @@ public class Reduce {
         return loop(to, func, initValue);
     }
 
-    public static int loop(int to, BiFunction<Integer, Integer, Integer> func, Supplier<Integer> initValue) {
+    public static int loop(int to,
+                           BiFunction<Integer, Integer, Integer> func,
+                           Supplier<Integer> initValue) {
         int rsl = initValue.get();
         for (int i = 1; i <= to; i++) {
             rsl = func.apply(rsl, i);
