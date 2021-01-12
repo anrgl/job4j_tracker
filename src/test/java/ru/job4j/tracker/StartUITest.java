@@ -23,7 +23,7 @@ public class StartUITest {
                 new ExitAction()
         );
         new StartUI(output).init(in, store, actions);
-        assertThat(store.findAll().get(0).getName(), is("Item name"));
+        assertThat(store.findAll().get(0).getName(), is("Item #1"));
     }
 
     @Test

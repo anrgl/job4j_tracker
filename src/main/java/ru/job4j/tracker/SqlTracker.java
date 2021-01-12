@@ -13,9 +13,14 @@ public class SqlTracker implements Store {
         init();
     }
 
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
+
     @Override
     public void init() {
-        try (InputStream is = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream is = SqlTracker.class
+                .getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
             config.load(is);
             Class.forName(config.getProperty("tracker.driver-class-name"));
@@ -32,7 +37,9 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         try (PreparedStatement statement =
-                cn.prepareStatement("insert into items(name) values (?)", Statement.RETURN_GENERATED_KEYS)) {
+                cn.prepareStatement(
+                        "insert into items(name) values (?)",
+                        Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.execute();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
