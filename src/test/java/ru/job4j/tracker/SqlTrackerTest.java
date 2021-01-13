@@ -53,13 +53,6 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void findAllItems() throws SQLException {
-        SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()));
-        List<Item> items = tracker.findAll();
-        assertThat(items.size(), is(22));
-    }
-
-    @Test
     public void findByName() throws SQLException {
         SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()));
         tracker.add(new Item("new Item"));
