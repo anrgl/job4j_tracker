@@ -36,6 +36,13 @@ public class Item {
         this.created = created;
     }
 
+    public static Item of(String name, String description) {
+        Item item = new Item();
+        item.setName(name);
+        item.setDescription(description);
+        return item;
+    }
+
     public int getId() {
         return id;
     }
@@ -50,6 +57,14 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
