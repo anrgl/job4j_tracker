@@ -59,11 +59,15 @@ public class StartUI {
                 }
             } else if (select == 5) {
                 System.out.println("=== Find items by name ====");
-                System.out.print("Enter item name: ");
+                System.out.print("Enter name: ");
                 String name = scanner.nextLine();
                 Item[] items = tracker.findByName(name);
-                for (Item item : items) {
-                    System.out.println(item);
+                if (items.length > 0) {
+                    for (Item item : items) {
+                        System.out.println(item);
+                    }
+                } else {
+                    System.out.println("Заявки с именем: " + name + " не найдены.");
                 }
             } else if (select == 6) {
                 run = false;
