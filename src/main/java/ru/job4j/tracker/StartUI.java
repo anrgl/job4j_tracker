@@ -40,13 +40,12 @@ public class StartUI {
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
-                System.out.print("Enter item id: ");
+                System.out.print("Enter id: ");
                 int id = Integer.parseInt(scanner.nextLine());
-                boolean result = tracker.delete(id);
-                if (result) {
-                    System.out.println("Item deleted successful");
+                if (tracker.delete(id)) {
+                    System.out.println("Заявка удалена успешно.");
                 } else {
-                    System.out.println("Item don't deleted");
+                    System.out.println("Ошибка удаления заявки.");
                 }
             } else if (select == 4) {
                 System.out.println("=== Find item by id ====");
